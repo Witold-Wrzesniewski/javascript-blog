@@ -1,13 +1,9 @@
 'use strict';
 
 const titleClickHandler = function(event){
-    /*console.log('Link was clicked!');
-    console.log(event.currentTarget); // <a>
-    console.log(event.target); // <span>
-    console.log(this); // <a>
-    console.log(event.currentTarget === this); // true
-    console.log(event); // currentTarget: null
-                        // target: span*/
+    const clickedElement = this
+    console.log('clickedElement (with plus): ' + clickedElement);
+    console.log('clickedElement:', clickedElement);
 
   /* [DONE] remove class 'active' from all article links  */
     const activeLinks = document.querySelectorAll('.titles a.active');
@@ -16,7 +12,8 @@ const titleClickHandler = function(event){
         activeLink.classList.remove('active');
     }
 
-  /* add class 'active' to the clicked link */
+  /* [IN PROGRESS] add class 'active' to the clicked link */
+    clickedElement.classList.add('active');
 
   /* [DONE] remove class 'active' from all articles */
     const activeArticles = document.querySelectorAll('.posts article.active');
