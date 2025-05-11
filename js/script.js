@@ -1,7 +1,8 @@
 'use strict';
 
-const titleClickHandler = function(){
-  console.log(this.innerText + ' link was clicked!');
+const titleClickHandler = function(event){
+    console.log('Link was clicked!');
+    console.log(event);
 
   /* remove class 'active' from all article links  */
 
