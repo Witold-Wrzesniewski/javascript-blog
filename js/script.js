@@ -31,7 +31,29 @@ const titleClickHandler = function(event){
     targetArticle.classList.add('active');
 }
 
-const links = document.querySelectorAll('.titles a');
-for (let link of links) {
-    link.addEventListener('click', titleClickHandler);
+const generateTitleLinks = function(){
+    /* Remove link list content */
+    const list = document.querySelector('.list.titles');
+    list.innerHTML = '';
+    /* For each article:
+        - get ID and write to const
+        - get title element and write to const
+        - generate link HTML and write to const
+        - append generated HTML to link list
+    */
+    const articles = document.querySelectorAll('.posts article');
+    for(let article of articles){
+        const articleID = article.getAttribute('id');
+        const articleTitle = article.querySelector('h3').innerText;
+        const listElement = document.createElement('li');
+        listElement.innerHTML = `<a href="#${articleID}"><span>${articleTitle}</span></a>`;
+        list.appendChild(listElement);
+    }
+
+    const links = document.querySelectorAll('.titles a');
+    console.log(links);
+    for (let link of links) {
+        link.addEventListener('click', titleClickHandler);
+    }
 }
+generateTitleLinks();
