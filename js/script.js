@@ -1,5 +1,5 @@
 'use strict';
-
+{
 const titleClickHandler = function(event){
     event.preventDefault();
     const clickedElement = this
@@ -31,9 +31,13 @@ const titleClickHandler = function(event){
     targetArticle.classList.add('active');
 }
 
+const optArticleSelector = '.post',
+    optTitleSelector = '.post-title',
+    optTitleListSelector = '.titles';
+
 const generateTitleLinks = function(){
     /* Remove link list content */
-    const list = document.querySelector('.list.titles');
+    const list = document.querySelector(optTitleListSelector);
     list.innerHTML = '';
     /* For each article:
         - get ID and write to const
@@ -41,19 +45,21 @@ const generateTitleLinks = function(){
         - generate link HTML and write to const
         - append generated HTML to link list
     */
-    const articles = document.querySelectorAll('.posts article');
+    const articles = document.querySelectorAll(optArticleSelector);
+    console.log(articles);
     for(let article of articles){
         const articleID = article.getAttribute('id');
-        const articleTitle = article.querySelector('h3').innerText;
+        const articleTitle = article.querySelector(optTitleSelector).innerText;
         const listElement = document.createElement('li');
         listElement.innerHTML = `<a href="#${articleID}"><span>${articleTitle}</span></a>`;
         list.appendChild(listElement);
     }
 
     const links = document.querySelectorAll('.titles a');
-    console.log(links);
+    //console.log(links);
     for (let link of links) {
         link.addEventListener('click', titleClickHandler);
     }
 }
 generateTitleLinks();
+}
