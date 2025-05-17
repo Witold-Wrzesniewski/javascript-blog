@@ -65,7 +65,7 @@ const generateTitleLinks = function (customSelector = '') {
 };
 generateTitleLinks();
 
-function generateTags(){
+const generateTags = function(){
   /* [NEW] create a new variable allTags with an empty object */
   let allTags = {};
 
@@ -83,21 +83,21 @@ function generateTags(){
     /* split tags into array */
     const tagsArray = tagsString.split(' ');
 
-      /* START LOOP: for each tag */
-      for(let tag of tagsArray){
-        /* generate HTML of the link */
-        const linkHtml = `<li><a href="#tag-${tag}">${tag}</a></li>\n`;
-        /* add generated code to html variable */
-        tagsWrapperHtml += linkHtml;
-        /* [NEW] check if this link is NOT already in allTags */
-        if(!allTags.hasOwnProperty(tag)){
-          /* [NEW] add generated code to allTags object */
-          allTags[tag] = 1;
-        }
-        else{
-          allTags[tag]++;
-        }
-      }/* END LOOP: for each tag */
+    /* START LOOP: for each tag */
+    for(let tag of tagsArray){
+      /* generate HTML of the link */
+      const linkHtml = `<li><a href="#tag-${tag}">${tag}</a></li>\n`;
+      /* add generated code to html variable */
+      tagsWrapperHtml += linkHtml;
+      /* [NEW] check if this link is NOT already in allTags */
+      if(!allTags.hasOwnProperty(tag)){
+        /* [NEW] add generated code to allTags object */
+        allTags[tag] = 1;
+      }
+      else{
+        allTags[tag]++;
+      }
+    }/* END LOOP: for each tag */
 
     /* insert HTML of all the links into the tags wrapper */
     tagsWrapper.innerHTML = tagsWrapperHtml;
@@ -152,7 +152,7 @@ const tagClickHandler = function (event) {
 
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-tags~="' + tag + '"]');
-}
+};
 
 const addClickListenersToTags = function () {
   /* find all links to tags */
@@ -164,7 +164,7 @@ const addClickListenersToTags = function () {
     /* add tagClickHandler as event listener for that link */
     tag.addEventListener('click', tagClickHandler);
   }/* END LOOP: for each link */
-}
+};
 addClickListenersToTags();
 
 const generateAuthors = function () {
@@ -212,7 +212,8 @@ const authorClickHandler = function (event) {
 
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-author="' + author + '"]');
-}
+};
+
 const addClickListenersToAuthors = function () {
   /* find all links to author */
   const allAuthors = document.querySelectorAll('a[href^="#author-"]');
@@ -223,5 +224,5 @@ const addClickListenersToAuthors = function () {
     /* add authorClickHandler as event listener for that link */
     author.addEventListener('click', authorClickHandler);
   }/* END LOOP: for each link */
-}
+};
 addClickListenersToAuthors();
