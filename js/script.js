@@ -104,12 +104,13 @@ const tagClickHandler = function (event) {
   /* make a new constant "tag" and extract tag from the "href" constant */
   const tag = href.replace('#tag-', '');
   /* find all tag links with class active */
-  const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
+  //const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
+  const activeLinks = document.querySelectorAll('a.active');
 
   /* START LOOP: for each active tag link */
-  for (let activeTag of activeTagLinks) {
+  for (let activeLink of activeLinks) {
     /* remove class active */
-    activeTag.classList.remove('active');
+    activeLink.classList.remove('active');
   }/* END LOOP: for each active tag link */
 
   /* find all tag links with "href" attribute equal to the "href" constant */
@@ -162,14 +163,14 @@ const authorClickHandler = function (event) {
   const href = clickedElement.getAttribute('href');
   /* make a new constant "author" and extract author from the "href" constant */
   const author = href.replace('#author-', '');
-  /* find all tag links with class active */
-  const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author-"]');
-  console.log(activeAuthorLinks)
+  /* find all author links with class active */
+  //const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author-"]');
+  const activeLinks = document.querySelectorAll('a.active');
 
   /* START LOOP: for each active author link */
-  for (let activeAuthor of activeAuthorLinks) {
+  for (let activeLink of activeLinks) {
     /* remove class active */
-    activeAuthor.classList.remove('active');
+    activeLink.classList.remove('active');
   }/* END LOOP: for each active author link */
 
   /* find all tag links with "href" attribute equal to the "href" constant */
