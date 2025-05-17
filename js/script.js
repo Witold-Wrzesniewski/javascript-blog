@@ -49,9 +49,6 @@ const generateTitleLinks = function (customSelector = '') {
   */
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
-  console.log(optArticleSelector + customSelector);
-  console.log(articles)
-
   for (let article of articles) {
     const articleID = article.getAttribute('id');
     const articleTitle = article.querySelector(optTitleSelector).innerText;
@@ -166,7 +163,8 @@ const authorClickHandler = function (event) {
   /* make a new constant "author" and extract author from the "href" constant */
   const author = href.replace('#author-', '');
   /* find all tag links with class active */
-  const activeAuthorLinks = document.querySelectorAll(`a.active[href="${href}"]`);
+  const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author-"]');
+  console.log(activeAuthorLinks)
 
   /* START LOOP: for each active author link */
   for (let activeAuthor of activeAuthorLinks) {
@@ -176,6 +174,7 @@ const authorClickHandler = function (event) {
 
   /* find all tag links with "href" attribute equal to the "href" constant */
   const equalHrefAuthorLinks = document.querySelectorAll('[href = "' + href + '"]');
+  console.log(equalHrefAuthorLinks)
 
   /* START LOOP: for each found author link */
   for (let equalHrefAuthor of equalHrefAuthorLinks) {
