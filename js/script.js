@@ -2,7 +2,8 @@
 
 const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
-  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML)
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
 }
 const opts = {
   ArticleSelector: '.post',
@@ -212,7 +213,9 @@ const generateAuthors = function () {
     /* get author from data-author attribute */
     const authorString = article.getAttribute('data-author');
     /* insert HTML of the author link into the author wrapper */
-    authorWrapper.innerHTML = `<a href="#author-${authorString}">by ${authorString}</a>`;
+    //authorWrapper.innerHTML = `<a href="#author-${authorString}">by ${authorString}</a>`;
+    const authorHTMLData = {authorValue: authorString};
+    authorWrapper.innerHTML = templates.authorLink(authorHTMLData);
     /*[NEW] check if this author is NOT already in allAuthors */
     if(!allAuthors.hasOwnProperty(authorString)){
       allAuthors[authorString] = 1;
