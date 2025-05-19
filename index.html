@@ -213,6 +213,11 @@
       <script id="template-author-link" type="text/x-handlebars-template">
         <a href="#author-{{authorValue}}">by {{authorValue}}</a>
       </script>
+      <script id="tagCloudLink" type="text/x-handlebars-template">
+        {{#each tags}}
+          <li class="inline"><a href="#tag-{{tag}}" class="{{className}}">{{tag}} <span>{{count}}</span></a></li>
+        {{/each}}
+      </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
       <script src="js/script.js" defer></script>
 </body>
