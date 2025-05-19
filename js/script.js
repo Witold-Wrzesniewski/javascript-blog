@@ -1,5 +1,8 @@
 'use strict';
 
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+}
 const opts = {
   ArticleSelector: '.post',
   TitleSelector: '.post-title',
@@ -56,10 +59,14 @@ const generateTitleLinks = function (customSelector = '') {
   for (let article of articles) {
     const articleID = article.getAttribute('id');
     const articleTitle = article.querySelector(opts.TitleSelector).innerText;
-    const listElement = document.createElement('li');
-    listElement.innerHTML = `<a href="#${articleID}"><span>${articleTitle}</span></a>`;
+
+    const linkHTMLData = {id: articleID, title: articleTitle};
+    const listElement = templates.articleLink(linkHTMLData);
+    //console.log(listElement);
+    //const listElement = document.createElement('li');
+    //listElement.innerHTML = `<a href="#${articleID}"><span>${articleTitle}</span></a>`;
     //titleList.appendChild(listElement);
-    titleList.insertAdjacentElement('beforeend', listElement);
+    titleList.insertAdjacentHTML('beforeend', listElement);
   }
 
   const links = document.querySelectorAll('.titles a');
