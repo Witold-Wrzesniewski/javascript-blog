@@ -218,6 +218,11 @@
           <li class="inline"><a href="#tag-{{tag}}" class="{{className}}">{{tag}} <span>{{count}}</span></a></li>
         {{/each}}
       </script>
+      <script id="authorsList" type="text/x-handlebars-template">
+        {{#each authors}}
+          <li><a href="#author-{{author}}"><span class="author-name">{{author}} ({{count}})</span></a></li>
+        {{/each}}
+      </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
       <script src="js/script.js" defer></script>
 </body>
